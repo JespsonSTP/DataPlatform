@@ -1,0 +1,23 @@
+services:
+    postgres:
+      image: postgres:13
+      environment:
+         - POSTGRES_USER= root
+         - POSTGRES_PASSWORD= root
+         - POSTGRES_DB= ny_taxi
+      volumes:
+          - "./postgres_ny_taxi_db:/var/lib/postgresql/data:rw"
+      ports:
+        - "5432:5432"
+    pgadmin:
+      image: dpage/pgadmin4
+      environment:
+        - PGADMIN_DEFAULT_EMAIL="admin@admin.com" 
+        - PGADMIN_DEFAULT_PASSWORD="root"
+      ports:
+        - "8080:80"
+
+
+#docker run -it --detach-keys='ctrl-c' --name nytaxidb2 -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="root" -e POSTGRES_DB="ny_taxi" -v C:/Users/marjysp/Desktop/dataplatform/postgres_ny_taxi_db:/var/lib/postgresql/data -p 5432:5432 postgres:13
+#docker run -it --detach-keys='ctrl-c' --name mypgadmin -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" -e PGADMIN_DEFAULT_PASSWORD="root" -p 8080:80 dpage/pgadmin4
+#linux -v $(pwd)=
